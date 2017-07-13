@@ -65,7 +65,7 @@
   <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative.
   </p>
 
-  <!-- Here are the Checkboxes being created -->
+  <!-- Here is the Fieldset being created -->
   <fieldset>
     <div>
       <!-- Here are the Checkboxes being created -->
@@ -163,36 +163,7 @@
 
 
   // (iii)
-  // CHANGES OF CHECKBOXES CREATION***********************************************************************************************************
-
-  // For the function's creation there is this code:
-  // function onCheckboxChanged(event) { ... }
-  // OR this syntax:
-  // var onCheckboxChanged = function(event) {
-  //
-  //   // Here the checkbox's event is defined
-  //   var checkbox = $(event.currentTarget);
-  //
-  //   // Now it is assigned the property 'checked' when clicked
-  //   var isChecked = checkbox.prop('checked');
-  //   console.log(checkbox.val(), isChecked);
-  //
-  //   // And here is the actual result!!
-  //   // It is wished, so that WHEN it is checked, to be shown
-  //   if (isChecked == true) {
-  //     $("tbody tr." + checkbox.val()).fadeIn(500);
-  //   }
-  //   // And when not, not to be shown
-  //   else {
-  //     $("tbody tr." + checkbox.val()).fadeOut(300);
-  //   }
-  // }
-  //
-  // $('.checkboxes input').change(onCheckboxChanged);
-
-
-  // (iv)
-  // SELECT CREATION********************************************************************************************************************
+  // SELECT CREATION*******************************************************************************************************************
 
   // Now the *SELECT* is being created
   var select = $('<select />');
@@ -241,6 +212,9 @@
   // And here it is returned to be shown to the HTML
   $('.select-options').append(select);
 
+
+  // (iv)
+  // FILTER CREATION**************************************************************************************************************
   // A function is being created
   var onFilterChanged = function() {
 

@@ -56,9 +56,18 @@
     </div>
   </nav>
 
-  <!-- Here are the Checkboxes being created -->
+  <!--Table container-->
+  <h2>Senators</h2>
+  <p>
+    First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive
+    powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory
+    officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.
+  </p>
+
+  <!-- Here is the Fieldset being created -->
   <fieldset>
     <div>
+      <!-- Here are the Checkboxes being created -->
       <div class="checkboxes checkbox1">
         <label class="checkbox-title">Filter By Party: </label>
         <input type="checkbox" value="R">
@@ -68,6 +77,7 @@
         <input type="checkbox" value="I">
         <label for="foo_baz">Independent</label>
       </div>
+      <!-- Here is the Select being created -->
       <div class="checkboxes checkbox2">
         <label class="checkbox-title">Filter By State: </label>
         <input type="checkbox" name="foo" value="bar" id="foo_bar">
@@ -75,14 +85,6 @@
       </div>
     </div>
   </fieldset>
-
-  <!--Table container-->
-  <h2>Senators</h2>
-  <p>
-    First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive
-    powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory
-    officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.
-  </p>
 
   <!-- Here I put the class with the name "table table-hover", to import the attributes of my linked script that I put in the head-->
   <table class="table table-hover table-bordered">
@@ -106,34 +108,52 @@
 
 <script src="congress-113-senate.js"></script>
 <script>
+  // (i)
+  // TABLE CREATION********************************************************************************************************************
+
   // First of all, I need to access the Object of my JS-file, this is why I used 'data'
   // Then I have to access the 'results'-array's first and only element
   // Lastly I write 'members' to access the specific object of my array that gives me the information that I want
   var members = data.results[0].members;
   var tbody = '';
 
+  // (ii)
+  //  NEW ARRAY OF MEMBERS CREATION********************************************************************************************************************
+
   // console.log(data);
   // console.log(members);
   for (var i = 0; i < members.length; i++) {
 
-    //I used this *var tr = ''* to inform the computer about this empty string, so that in the future it's going to contain the data of the table that I wanted to create!!
-    var tr = '';
+    // I used this *var tr = ''* to inform the computer about this empty string
+    //  so that in the future it's going to contain the data of the table that I wanted to create
     var member = members[i];
+
+    // Here an *addClass* element is required to give a class to some specific elements later
+    var tr = '<tr>';
+    $(tr).addClass(member.party)
+      .addClass(member.state)
+      .data("party", member.party)
+      .data('state', member.state);
 
     // I create this variable to make my code look more tidy and clean
     var name = member.first_name + ' ' + (member.middle_name || "") + ' ' + member.last_name;
 
-    // I create a table-row in the HTML <>, because in the end I use the *innerHTML* that turns our HTML tags inside the stbodyings into actual code
+    // I create a table-row in the HTML <>, because in the end I use the *innerHTML*
+    // Which turns our HTML tags inside the stbodyings into actual code
     // I use the *+=* to add at the same time ALL of my data that I would like to make appear in my page
-    tr += '<tr>';
+    // tr += '<tr>';
 
-    // Here I create a table-data element using the same tags for the EXACT same reason as above, but it is going to be INSIDE of the TR
+    // Here I create a table-data element using the same tags for the EXACT same reason as above
+    // But it is going to be INSIDE of the TR
     // This TD is going to show on my web-page the Number of the member
     // But because the counting always starts from *0*, I add always *1* to get the actual number of the member
     tr += '<td>' + (i + 1) + '</td>';
+
     // Also, inside the TD tag I add the data that I need to see inside my TD
     tr += '<td>';
-    // Here I use the *''* to keep the *member.url* extracted from the *<a>* element, because othewise it is going to appear as JS and it won't be properly loaded
+
+    // Here I use the *''* to keep the *member.url* extracted from the *<a>* element
+    // Because othewise it is going to appear as JS and it won't be properly loaded
     tr += '<a href = "' + member.url + '" target = _blank>' + name + '</a>';
     tr += '</td>';
     tr += '<td>' + member.party + '</td>';
@@ -141,10 +161,9 @@
     tr += '<td>' + member.seniority + '</td>';
     tr += '<td>' + member.votes_with_party_pct + ' %' + '</td>';
 
-    // I close my TR tag
-    tr += '</tr>';
-
+    tr += '</tr>'
     tbody += tr;
+    $('tbody').hide();
   }
 
   // Here is needed to import the data from JS to the HTML and also using HTML Element-Tags INSIDE the JS
@@ -153,9 +172,86 @@
   // And the 2nd way is by using jQuery like this:
   // $('#senate-data').html(tbody);
 
-  // I could also use this: (If I remove the comment tag from either of these and put them to the other, I am going to have the same results)
 
-  // document.querySelector("#senate-data").innerHTML = thead + tbody;
+  // (iii)
+  // CHANGES OF CHECKBOXES CREATION***********************************************************************************************************
+
+
+  // For the function's creation there is this code:
+  // function onCheckboxChanged(event) { ... }
+  // OR this syntax:
+  var onCheckboxChanged = function(event) {
+
+    // Here the checkbox's event is defined
+    var checkbox = $(event.currentTarget);
+
+    // Now it is assigned the property 'checked' when clicked
+    var isChecked = checkbox.prop('checked');
+    console.log(checkbox.val(), isChecked);
+
+    // And here is the actual result!!
+    // It is wished, so that WHEN it is checked, to be shown
+    if (isChecked == true) {
+      $("tbody tr." + checkbox.val()).fadeIn(500);
+    }
+    // And when not, not to be shown
+    else {
+      $("tbody tr." + checkbox.val()).fadeOut(300);
+    }
+  }
+
+  $('.checkboxes input').change(onCheckboxChanged);
+
+
+  // (iv)
+  // SELECT CREATION********************************************************************************************************************
+
+  // Now the *SELECT* is being created
+  var select = $('<select />');
+
+  // And here the 1st 'option' of the *SELECT* is taking place
+  // This is like a title, to make the website look more organised
+  var firstOption = $('<option />').text('--State--');
+  // And here is the 'option' appended to the 'select'
+  select.append(firstOption);
+
+  // Creation of an empty array is needed
+  var states = [];
+
+  // The loop is created in order to fill the empty array with the name of the 'States'
+  for (var i = 0; i < members.length; i++) {
+
+    // This is happening for every member
+    var member = members[i];
+
+    // EXPLANATION
+    //  And now it is checked in the 'states' if the *indexOf* the 'member.state' is equal to -1
+    // ' == -1'  means that it actually doesn't exist
+    // And this is helpful, because what is needed here is to create a list with UNIQUE options
+    // So, for every 'state-value', the *if* checks if it is part of our array
+    // If it is NOT, it has a value of -1, because the text editor wasn't able to find it)
+    if (states.indexOf(member.state) == -1) {
+      // So it has to put this value in the 'states' array
+      states.push(member.state);
+    }
+    // Since there is no 'else', it means that when the value is already there, text-editor does nothing
+  }
+
+  // Here the new given array is alphabetically sorted
+  states.sort();
+
+  // And now for the new array's length
+  for (var i = 0; i < states.length; i++) {
+
+    // An *option* is created with the *text* of the 'state[i]' and also a *value* of the 'state[i]'
+    var option = $('<option>').text(states[i]).val(states[i]);
+
+    // Afterwards it is appended to the *select* that was created before
+    select.append(option);
+  }
+
+  // And here it is returned to be shown to the HTML
+  $('.select-options').append(select);
 </script>
 
 </html>
