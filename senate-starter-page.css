@@ -1,0 +1,81 @@
+body {
+  /* (1) This is the style that I am importing to my HTML file through the link in it*/
+  /*font-family: 'Rationale', sans-serif;*/
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 17px;
+  margin: 25px 50px;
+}
+
+h2 {
+  font-size: 40px;
+  font-family: 'Rationale', sans-serif;
+}
+
+th, #senate-data {
+  text-align: center;
+}
+
+th {
+  font-size: 18px;
+}
+
+#senate-data {}
+
+.logo, .e-mail {
+  width: 47%;
+  display: inline-block;
+}
+
+.logo {
+  margin: 15px;
+}
+
+.e-mail {
+  text-align: right;
+}
+
+p {
+  text-indent: 30px;
+}
+
+footer {
+  min-height: 30px;
+  font-family: serif;
+  color: white;
+  text-align: center;
+}
+
+.panel-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.checkboxes {
+  display: inline-block;
+  font-size: 16px;
+}
+
+.checkbox1 {
+  width: 62%;
+}
+
+.checkbox2 {
+  float: right;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.inline {
+  display: inline;
+}
+
+.checkbox-title {
+  font-size: 20px;
+}
+
+label {
+  font-size: 14px;
+  padding: 0.5em;
+}

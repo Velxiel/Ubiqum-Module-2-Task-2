@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!--EXPLANATION -->
+  <!--All of the following code is copied from (*https://www.w3schools.com/bootstrap/bootstrap_get_started.asp*) to style my HTML-Page -->
+
+  <!--The paste starts here -->
+  <meta charset="utf-8">
+
+  <!--This to make my Page be responsive to any device-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!--And ends here -->
+
+  <!-- (1) This is a link to Google-Fonts that provides me with style for *font-family* that I am going to use in my CSS file -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Rationale" rel="stylesheet">
+
+  <link rel="stylesheet" href="senate-starter-page.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="TGIF Logo" width="100px">
+    </div>
+    <div class="e-mail">
+      <img src="e-mail-icon.svg" alt="E-mail Icon" width="40px">
+      <a href="mailto:info@tgif.net?subject=To%20TGIF%20Team&body=Hello!%0AI%20would%20like%20%20to%20ask:">info@tgif.net</a>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="home-starter-page.html">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113
+              <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="senate-starter-page.html">Senate</a></li>
+            <li><a href="house-starter-page-jquery.html">House</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!--Table container-->
+
+  <h2>Congressmen</h2>
+  <p>The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and Senate re-pass
+    the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President
+    in case there is no majority in the Electoral College.</p>
+  <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative.
+  </p>
+
+  <!-- Here are the Checkboxes being created -->
+  <fieldset>
+    <div>
+      <!-- Here are the Checkboxes being created -->
+      <div class="checkboxes checkbox1">
+        <label class="checkbox-title">Filter By Party: </label>
+        <input type="checkbox" value="R" checked="">
+        <label for="foo_bar">Republican</label>
+        <input type="checkbox" value="D" checked="">
+        <label for="foo_baz">Democrat</label>
+        <input type="checkbox" value="I" checked="">
+        <label for="foo_baz">Independent</label>
+      </div>
+      <!-- Here is the Select being created -->
+      <div class="checkboxes checkbox2 select-options">
+        <label class="checkbox-title">Filter By State: </label>
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- Here I put the class with the name "table table-hover", to import the attributes of my linked script that I put in the head-->
+  <table id="senate-data" class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Members</th>
+        <th>Full Name</th>
+        <th>Party</th>
+        <th>State</th>
+        <th>Seniority</th>
+        <th>Vote Percentage</th>
+      </tr>
+    </thead>
+  </table>
+
+  <footer class="container-fluid navbar navbar-inverse footer-size">
+    <p>@2016 TGIF | All Rights Reserved</p>
+  </footer>
+</body>
+
+<script src="congress-113-house.js"></script>
+<script>
+  // (i)
+  // TABLE CREATION********************************************************************************************************************
+
+  // First of all, I need to access the Object of my JS-file, this is why I used 'data'
+  // Then I have to access the 'results'-array's first and only element
+  // Lastly 'members' is written to access the specific object of array, that gives the information needed
+  var members = data.results[0].members;
+
+  // Creation of *tbody* using jQuery
+  var tbody = $('<tbody />');
+
+  // (ii)
+  //  NEW ARRAY OF MEMBERS CREATION********************************************************************************************************************
+
+  // Loop Creation
+  for (var i = 0; i < members.length; i++) {
+
+    // This var gives back the 'specific member' of the 'array of members'
+    var member = members[i];
+
+    // Here an *addClass* element is required to give a class to some specific elements later
+    var tr = $('<tr />')
+      .addClass(member.party)
+      .addClass(member.state)
+      .data("party", member.party)
+      .data('state', member.state)
+
+    // I create this variable to make my code look more tidy and clean
+    var name = member.first_name + ' ' + (member.middle_name || "") + ' ' + member.last_name;
+
+    //  A td that shows the number of the member by using jQuery
+    tr.append($('<td />').text(i + 1));
+
+    // Adding to the *TD* an *a* element to make it a link by using jQuery
+    var a = $('<a />').text(name).attr('href', member.url).attr('target', '_blank');
+    tr.append($('<td />').append(a));
+
+    // OOOORRRR this syntax could also be used, but it becomes less readable
+    // tr.append($('<td />').append($('<a />').text(name).attr('href', member.url).attr('target', '_blank'));
+
+    // And now by using jQuery again *td* is being created and it is appended to the *tr*
+    tr.append($('<td />').text(member.party));
+    tr.append($('<td />').text(member.state));
+    tr.append($('<td />').text(member.seniority));
+    tr.append($('<td />').text(member.votes_with_party_pct + ' %'));
+
+    tbody.append(tr);
+  }
+
+  // Here is needed to import the data from JS to the HTML and also using HTML Element-Tags INSIDE the JS
+  // The 1st way of doing that is this:
+  //  document.getElementById("senate-data").innerHTML = tbody;
+  // And the 2nd way is by using jQuery like this:
+  $('#senate-data').append(tbody);
+
+
+  // (iii)
+  // CHANGES OF CHECKBOXES CREATION***********************************************************************************************************
+
+  // For the function's creation there is this code:
+  // function onCheckboxChanged(event) { ... }
+  // OR this syntax:
+  // var onCheckboxChanged = function(event) {
+  //
+  //   // Here the checkbox's event is defined
+  //   var checkbox = $(event.currentTarget);
+  //
+  //   // Now it is assigned the property 'checked' when clicked
+  //   var isChecked = checkbox.prop('checked');
+  //   console.log(checkbox.val(), isChecked);
+  //
+  //   // And here is the actual result!!
+  //   // It is wished, so that WHEN it is checked, to be shown
+  //   if (isChecked == true) {
+  //     $("tbody tr." + checkbox.val()).fadeIn(500);
+  //   }
+  //   // And when not, not to be shown
+  //   else {
+  //     $("tbody tr." + checkbox.val()).fadeOut(300);
+  //   }
+  // }
+  //
+  // $('.checkboxes input').change(onCheckboxChanged);
+
+
+  // (iv)
+  // SELECT CREATION********************************************************************************************************************
+
+  // Now the *SELECT* is being created
+  var select = $('<select />');
+
+  // And here the 1st 'option' of the *SELECT* is taking place
+  // This is like a title, to make the website look more organised
+  var firstOption = $('<option />').text('--State--');
+  // And here is the 'option' appended to the 'select'
+  select.append(firstOption);
+
+  // Creation of an empty array is needed
+  var states = [];
+
+  // The loop is created in order to fill the empty array with the name of the 'States'
+  for (var i = 0; i < members.length; i++) {
+
+    // This is happening for every member
+    var member = members[i];
+
+    // EXPLANATION
+    //  And now it is checked in the 'states' if the *indexOf* the 'member.state' is equal to -1
+    // ' == -1'  means that it actually doesn't exist
+    // And this is helpful, because what is needed here is to create a list with UNIQUE options
+    // So, for every 'state-value', the *if* checks if it is part of our array
+    // If it is NOT, it has a value of -1, because the text editor wasn't able to find it)
+    if (states.indexOf(member.state) == -1) {
+      // So it has to put this value in the 'states' array
+      states.push(member.state);
+    }
+    // Since there is no 'else', it means that when the value is already there, text-editor does nothing
+  }
+
+  // Here the new given array is alphabetically sorted
+  states.sort();
+
+  // And now for the new array's length
+  for (var i = 0; i < states.length; i++) {
+
+    // An *option* is created with the *text* of the 'state[i]' and also a *value* of the 'state[i]'
+    var option = $('<option>').text(states[i]).val(states[i]);
+
+    // Afterwards it is appended to the *select* that was created before
+    select.append(option);
+  }
+
+  // And here it is returned to be shown to the HTML
+  $('.select-options').append(select);
+
+  // A function is being created
+  var onFilterChanged = function() {
+
+    // That checks if the 'input-checkbox' is 'checked'
+    // And then a *map* is executed
+    // EXPLANATION: *MAP* is an element that searches in an array, creates a new one and then gives back the new result
+    // That contains a 'function'
+    var parties = $('input:checkbox:checked').map(function() {
+      // The function 'returns' the current *value* of the 'checkbox'
+      return this.value
+      // After that, the *map* returns a new array with the new *value*
+
+    }).get(); // And with *get*, and since there was no position specified inside its parenthesis(),
+    //           ALL of the elements inside the new array from 'map' are going to be shown
+
+    // A new variable is set to search for 'state'-*value* inside the *select* element
+    var state = select.val();
+
+    // And another one to 'count' the elements of the list that are being shown on the HTML
+    var count = 0;
+
+    // Now, it searches the *TR* (='table-row') and for 'each' of these, a function is firing
+    // It takes 2 parameters:
+    // i = the [i] of the array
+    // e = event
+    $('tr').each(function(i, e) {
+
+      // A new variable is being created for the current ('this') 'data' of 'state'
+      var trstate = $(this).data("state");
+
+      // And another new variable is being created for the current ('this') 'data' of 'party'
+      var trparty = $(this).data("party");
+
+      // An *if* is created in order to check BOTH the elements with 'party' & 'state' *data*
+      // IF in the 'current' Array (='inArray') the 'parties' AND the *data* of the 'party' > -1
+      // (Which means that they both exist)
+      // AND ALSO (&&) the *data* of the 'state' are:
+      // EITHER the 'state' OR (||) the string "--State--"
+      if ($.inArray(trparty, parties) > -1 && (trstate == state || state == "--State--")) {
+
+        // Then, it makes the 'current' (='this') to fade in with a duration of 500 ms
+        $(this).show(500);
+
+        // And also the 'count' is increasing
+        count++;
+
+        // ELSE they are being slided down
+      } else {
+        $(this).hide(500);
+      }
+    });
+
+    // And now if the 'count' equals 0 elements being shown on the screen:
+    if (count == 0) {
+
+      // A message is being created to 'alert' the user and also to provide the user with info
+      var message = alert("Please check a Party or a State to view the results\!");
+      // This is practically useless, but it makes the website a little bit more 'user-friendly'
+    }
+    console.log(count)
+
+  };
+
+  // Lastly, the 'input'-elements with 'checkbox'-attribute on the HTML ....
+  // .... are being 'changed', and the function 'onFilterChanged' is called
+  $('input:checkbox,select').change(onFilterChanged);
+</script>
+
+</html>

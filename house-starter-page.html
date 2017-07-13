@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!--EXPLANATION -->
+  <!--All of the following code is copied from (*https://www.w3schools.com/bootstrap/bootstrap_get_started.asp*) to style my HTML-Page -->
+
+  <!--The paste starts here -->
+  <meta charset="utf-8">
+
+  <!--This to make my Page be responsive to any device-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- (1) This is a link to Google-Fonts that provides me with style for *font-family* that I am going to use in my CSS file -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Rationale" rel="stylesheet">
+  <!--And ends here -->
+
+  <link rel="stylesheet" href="senate-starter-page.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="TGIF Logo" width="100px">
+    </div>
+    <div class="e-mail">
+      <img src="e-mail-icon.svg" alt="E-mail Icon" width="40px">
+      <a href="mailto:info@tgif.net?subject=To%20TGIF%20Team&body=Hello!%0AI%20would%20like%20%20to%20ask:">info@tgif.net</a>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="home-starter-page.html">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113
+              <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="senate-starter-page.html">Senate</a></li>
+            <li><a href="house-starter-page-jquery.html">House</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <table>
+    <header>
+      <div>
+      </div>
+    </header>
+    <!--Table container-->
+    <div>
+      <h2>Congressmen</h2>
+      <p>The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and Senate re-pass
+        the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President
+        in case there is no majority in the Electoral College.</p>
+      <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative. </p>
+    </div>
+
+    <!-- Here are the Checkboxes being created -->
+    <fieldset>
+      <div>
+        <div class="checkboxes checkbox1">
+          <label class="checkbox-title">Filter By Party : </label>
+          <input type="checkbox" name="foo" value="bar" id="foo_bar">
+          <label for="foo_bar">Republican</label>
+          <input type="checkbox" name="foo" value="baz" id="foo_bar">
+          <label for="foo_baz">Democrat</label>
+          <input type="checkbox" name="foo" value="baz" id="foo_bar">
+          <label for="foo_baz">Independent</label>
+        </div>
+        <div class="checkboxes checkbox2">
+          <label class="checkbox-title">Filter By State: </label>
+          <input type="checkbox" name="foo" value="bar" id="foo_bar">
+          <label for="foo_bar">Party</label>
+        </div>
+      </div>
+    </fieldset>
+    <!-- Here I put the class with the name "table table-hover", to import the attributes of my linked script that I put in the head-->
+    <table id="senate-data" class="table table-hover table-bordered">
+
+    </table>
+    <footer class="container-fluid navbar navbar-inverse footer-size">
+      <p>@2016 TGIF | All Rights Reserved</p>
+    </footer>
+</body>
+
+<script src="congress-113-senate.js"></script>
+<script>
+  // I create a *thead* variable to put inside the table with the ID that I have in my html file
+  var thead = '';
+  thead += '<thead>';
+  thead += '<tr>';
+  thead += '<th>Members</th>';
+  thead += '<th>Full Name</th>';
+  thead += '<th>Party</th>';
+  thead += '<th>State</th>';
+  thead += '<th>Seniority</th>';
+  thead += '<th>Vote Percentage</th>';
+  thead += '</tr>';
+  thead += '</thead>';
+
+  // First of all, I need to access the Object of my JS-file, this is why I used 'data'
+  // Then I have to access the 'results'-array's first and only element
+  // Lastly I write 'members' to access the specific object of my array that gives me the information that I want
+  var members = data.results[0].members;
+
+  // As I did with the *thead*, but now I do for the *tbody*
+  var tbody = '';
+  tbody += '<tbody>';
+
+  // console.log(data);
+  // console.log(members);
+  for (var i = 0; i < members.length; i++) {
+
+    //I used this *var tr = ''* to inform the computer about this empty string, so that in the future it's going to contain the data of the table that I wanted to create!!
+    var tr = '';
+    var member = members[i];
+
+    // I create this variable to make my code look more tidy and clean
+    var name = member.first_name + ' ' + (member.middle_name || "") + ' ' + member.last_name;
+
+    // I create a table-row in the HTML <>, because in the end I use the *innerHTML* that turns our HTML tags inside the stbodyings into actual code
+    // I use the *+=* to add at the same time ALL of my data that I would like to make appear in my page
+    tr += '<tr>';
+
+    // Here I create a table-data element using the same tags for the EXACT same reason as above, but it is going to be INSIDE of the TR
+    // This TD is going to show on my web-page the Number of the member
+    // But because the counting always starts from *0*, I add always *1* to get the actual number of the member
+    tr += '<td>' + (i + 1) + '</td>';
+    // Also, inside the TD tag I add the data that I need to see inside my TD
+    tr += '<td>';
+    // Here I use the *''* to keep the *member.url* extracted from the *<a>* element, because othewise it is going to appear as JS and it won't be properly loaded
+    tr += '<a href = "' + member.url + '" target = _blank>' + name + '</a>';
+    tr += '</td>';
+    tr += '<td>' + member.party + '</td>';
+    tr += '<td>' + member.state + '</td>';
+    tr += '<td>' + member.seniority + '</td>';
+    tr += '<td>' + member.votes_with_party_pct + ' %' + '</td>';
+
+    // I close my TR tag
+    tr += '</tr>';
+
+    tbody += tr;
+    tbody += '</tbody>';
+  }
+  // *querySelector* is pretty much the same as *getElementById*, but it can be used as CSS is being used
+  // So instead of using the string below *document.getElementById("senate-data").innerHTML = thead + tbody;*,
+
+  document.getElementById("senate-data").innerHTML = thead + tbody;
+
+  // , I could also use this: (If I remove the comment tag from either of these and put them to the other, I am going to have the same results)
+
+  // document.querySelector("#senate-data").innerHTML = thead + tbody;
+</script>
+
+</html>
