@@ -46,10 +46,26 @@
         <li class="active"><a href="home-starter-page.html">Home</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113
-              <span class="caret"></span></a>
+            <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="senate-starter-page.html">Senate</a></li>
-            <li><a href="house-starter-page-jquery.html">House</a></li>
+            <li><a href="congress-113-senate.html">Senate</a></li>
+            <li><a href="congress-113-house-jQuery.html">House</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Attendance
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="attendance-senate.html">Senate</a></li>
+            <li><a href="attendance-house.html">House</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Party Loyalty
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="party-loyalty-senate.html">Senate</a></li>
+            <li><a href="party-loyalty-house.html">House</a></li>
           </ul>
         </li>
       </ul>
@@ -240,7 +256,7 @@
     // It takes 2 parameters:
     // i = the [i] of the array
     // e = event
-    $('tr').each(function(i, e) {
+    $('tbody tr').each(function(i, e) {
 
       // A new variable is being created for the current ('this') 'data' of 'state'
       var trstate = $(this).data("state");
@@ -253,7 +269,10 @@
       // (Which means that they both exist)
       // AND ALSO (&&) the *data* of the 'state' are:
       // EITHER the 'state' OR (||) the string "--State--"
-      if ($.inArray(trparty, parties) > -1 && (trstate == state || state == "--State--")) {
+      var isInArray = $.inArray(trparty, parties) > -1;
+      var isSameState = trstate == state || state == "--State--";
+
+      if (isInArray && isSameState) {
 
         // Then, it makes the 'current' (='this') to fade in with a duration of 500 ms
         $(this).show(500);

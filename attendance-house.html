@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!--EXPLANATION -->
+  <!--All of the following code is copied from (*https://www.w3schools.com/bootstrap/bootstrap_get_started.asp*) to style my HTML-Page -->
+
+  <!--The paste starts here -->
+  <meta charset="utf-8">
+
+  <!--This to make my Page be responsive to any device-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!--And ends here -->
+
+  <!-- (1) This is a link to Google-Fonts that provides me with style for *font-family* that I am going to use in my CSS file -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Rationale" rel="stylesheet">
+
+  <link rel="stylesheet" href="senate-starter-page.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="TGIF Logo" width="100px">
+    </div>
+    <div class="e-mail">
+      <img src="e-mail-icon.svg" alt="E-mail Icon" width="40px">
+      <a href="mailto:info@tgif.net?subject=To%20TGIF%20Team&body=Hello!%0AI%20would%20like%20%20to%20ask:">info@tgif.net</a>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="home-starter-page.html">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="congress-113-senate.html">Senate</a></li>
+            <li><a href="congress-113-house-jQuery.html">House</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Attendance
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="attendance-senate.html">Senate</a></li>
+            <li><a href="attendance-house.html">House</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Party Loyalty
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="party-loyalty-senate.html">Senate</a></li>
+            <li><a href="party-loyalty-house.html">House</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!--Table container-->
+  <div>
+    <h2>Attendance</h2>
+    <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a
+      majority is not present.</p>
+
+    <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives
+      takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
+
+    <h2>Senate at a glance</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Party</th>
+          <th>Number of Reps</th>
+          <th>% Voted with Prty</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Republican</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>Democrat</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>Independent</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Least Engaged (Bottom 10% Attendance)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Number of Missed Votes</th>
+          <th>% Missed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Most Engaged (Top 10% Attendance)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Number of Missed Votes</th>
+          <th>% Missed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="container-fluid navbar navbar-inverse footer-size">
+    <p>@2016 TGIF | All Rights Reserved</p>
+  </footer>
+</body>
+
+<script src="congress-113-house.js"></script>
+<script>
+  // A var named 'statistics' is created
+  // It contains a JSON, that can be used for the calculations later
+  var statistics = {
+    no_of_reps: {
+      "Number of Republicans": 0,
+      "Number of Democrats": 0,
+      "Number of Independents": 0,
+      "Total": 0
+    },
+    no_of_missed_votes: {
+      "Missed Votes of Republicans": 0,
+      "Missed Votes of Democrats": 0,
+      "Missed Votes of Independents": 0,
+      "Total": 0
+    }
+  };
+</script>
+
+</html>

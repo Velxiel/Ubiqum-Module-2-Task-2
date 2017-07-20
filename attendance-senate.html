@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!--EXPLANATION -->
+  <!--All of the following code is copied from (*https://www.w3schools.com/bootstrap/bootstrap_get_started.asp*) to style my HTML-Page -->
+
+  <!--The paste starts here -->
+  <meta charset="utf-8">
+
+  <!--This to make my Page be responsive to any device-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!--And ends here -->
+
+  <!-- (1) This is a link to Google-Fonts that provides me with style for *font-family* that I am going to use in my CSS file -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Rationale" rel="stylesheet">
+
+  <link rel="stylesheet" href="senate-starter-page.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="TGIF Logo" width="100px">
+    </div>
+    <div class="e-mail">
+      <img src="e-mail-icon.svg" alt="E-mail Icon" width="40px">
+      <a href="mailto:info@tgif.net?subject=To%20TGIF%20Team&body=Hello!%0AI%20would%20like%20%20to%20ask:">info@tgif.net</a>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="home-starter-page.html">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="congress-113-senate.html">Senate</a></li>
+            <li><a href="congress-113-house-jQuery.html">House</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Attendance
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="attendance-senate.html">Senate</a></li>
+            <li><a href="attendance-house.html">House</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Party Loyalty
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="party-loyalty-senate.html">Senate</a></li>
+            <li><a href="party-loyalty-house.html">House</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!--Table container-->
+  <div>
+    <h2>Attendance</h2>
+    <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a
+      majority is not present.</p>
+
+    <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives
+      takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
+
+    <h2>Senate at a glance</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Party</th>
+          <th>Number of Reps</th>
+          <th>% Voted with Prty</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Republican</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>Democrat</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>Independent</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Least Engaged (Bottom 10% Attendance)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Number of Missed Votes</th>
+          <th>% Missed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Most Engaged (Top 10% Attendance)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Number of Missed Votes</th>
+          <th>% Missed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="container-fluid navbar navbar-inverse footer-size">
+    <p>@2016 TGIF | All Rights Reserved</p>
+  </footer>
+</body>
+
+<script src="congress-113-senate.js"></script>
+<script src="senate-statistics.js"></script>
+<script>
+  // Takes the data from the JSON object
+  var members = data.results[0].members;
+
+  // Different *var*s are being created in order to count the number of each Party
+  var numberOfRepublicans = 0;
+  var numberOfDemocrats = 0;
+  var numberOfIndependents = 0;
+  // And the total number of them
+  var totalNumberOfRepresentatives = 0;
+
+  // Different *var*s are being created in order to count the number of 'missed votes' of each Party
+  var missedVotesOfRepublicans = 0;
+  var missedVotesOfDemocrats = 0;
+  var missedVotesOfIndependents = 0;
+  // And the total number of them
+  var totalNumberOfMissedVotes = 0;
+
+  // CALCULATING THE VALUES OF THE JavaScript Object LIST FROM THE 'Senate JSON'**********************************
+  // The creation of the loop through the JSON list is needed for the calculations about the info above
+  for (var i = 0; i < members.length; i++) {
+
+    // For each 'member' of the list
+    var member = members[i];
+
+    // Pointing the path that JS needs to follow in order to access the needed info
+    var missedVotes = member.missed_votes;
+
+    // Because this info is a string with a number inside, a function is neccesary
+    // This function is called *parseInt()* and it can turn any number inside a string an actual number
+    missedVotes = parseInt(missedVotes);
+
+    // Checking the value of the 'Party-Member' in the JSON list
+    if (member.party == "R") {
+      numberOfRepublicans++;
+      missedVotesOfRepublicans = missedVotesOfRepublicans + missedVotes;
+
+    } else if (member.party == "D") {
+      numberOfDemocrats = numberOfDemocrats + 1;
+      missedVotesOfDemocrats = missedVotesOfDemocrats + missedVotes;
+
+    } else {
+      numberOfIndependents++;
+      missedVotesOfIndependents = missedVotesOfIndependents + missedVotes;
+    }
+    // The total number of list members is being calculated here
+    totalNumberOfRepresentatives++;
+  }
+  // And just for security, another way of calculating the total can be created
+  // var totalNumberOfRepresentatives = numberOfRepublicans + numberOfDemocrats + numberOfIndependents;
+
+  // And a total of 'Missed Votes' should be calculated
+  totalNumberOfMissedVotes = missedVotesOfRepublicans + missedVotesOfDemocrats + missedVotesOfIndependents;
+
+  // ASSIGNING THE NEW VALUES TO THE JavaScript Object LIST*********************************************************
+  // And here the new property of the 'Statistics'-JS are being assigned to the file
+  console.log(statistics);
+
+  statistics.no_of_reps["Number_of_Republicans"] = numberOfRepublicans;
+  console.log(numberOfRepublicans);
+
+  statistics.no_of_reps["Number_of_Democrats"] = numberOfDemocrats;
+  console.log(numberOfDemocrats);
+
+  statistics.no_of_reps["Number_of_Independents"] = numberOfIndependents;
+  console.log(numberOfIndependents);
+
+  statistics.no_of_reps["Total"] = totalNumberOfRepresentatives;
+  console.log(totalNumberOfRepresentatives);
+
+  statistics.no_of_missed_votes["Missed_Votes_of_Republicans"] = missedVotesOfRepublicans;;
+  console.log(missedVotesOfRepublicans);
+
+  statistics.no_of_missed_votes["Missed_Votes_of_Democrats"] = missedVotesOfDemocrats;
+  console.log(missedVotesOfDemocrats);
+
+  statistics.no_of_missed_votes["Missed_Votes_of_Independents"] = missedVotesOfIndependents;
+  console.log(missedVotesOfIndependents);
+
+  statistics.no_of_missed_votes["Total"] = totalNumberOfMissedVotes;
+  console.log(totalNumberOfMissedVotes);
+
+
+  // Here an average of the each Party's array of data is being calculated
+  var averagePercentageOfRepublicans = 100 * numberOfRepublicans / totalNumberOfRepresentatives;
+  console.log(averagePercentageOfRepublicans + " %");
+
+  var averagePercentageOfDemocrats = 100 * numberOfDemocrats / totalNumberOfRepresentatives;
+  console.log(averagePercentageOfDemocrats + " %");
+
+  var averagePercentageOfIndependents = 100 * numberOfIndependents / totalNumberOfRepresentatives;
+  console.log(averagePercentageOfIndependents + " %");
+
+  var totalPercentageOfRepresentatives = 100 * totalNumberOfRepresentatives / totalNumberOfRepresentatives;
+  console.log(totalPercentageOfRepresentatives + " %");
+
+
+  // And here the new property of the 'Statistics'-JS are being assigned to the file
+  statistics.percentage_of_voted_parties["Pecentage_of_Republicans"] = averagePercentageOfRepublicans;
+  console.log(averagePercentageOfRepublicans);
+
+  statistics.percentage_of_voted_parties["Pecentage_of_Democrats"] = averagePercentageOfDemocrats;
+  console.log(averagePercentageOfDemocrats);
+
+  statistics.percentage_of_voted_parties["Pecentage_of_Independents"] = averagePercentageOfIndependents;
+  console.log(averagePercentageOfIndependents);
+
+  statistics.percentage_of_voted_parties["Pecentage_of_Total"] = totalPercentageOfRepresentatives;
+  console.log(totalPercentageOfRepresentatives);
+</script>
+
+</html>
