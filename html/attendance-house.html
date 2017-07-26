@@ -26,16 +26,16 @@
   <!-- <link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Rationale" rel="stylesheet">
 
-  <link rel="stylesheet" href="senate-starter-page.css">
+  <link rel="stylesheet" href="../style/senate-starter-page.css">
 </head>
 
 <body>
   <header>
     <div class="logo">
-      <img src="logo.png" alt="TGIF Logo" width="100px">
+      <img src="../images/logo.png" alt="TGIF Logo" width="100px">
     </div>
     <div class="e-mail">
-      <img src="e-mail-icon.svg" alt="E-mail Icon" width="40px">
+      <img src="../images/e-mail-icon.svg" alt="E-mail Icon" width="40px">
       <a href="mailto:info@tgif.net?subject=To%20TGIF%20Team&body=Hello!%0AI%20would%20like%20%20to%20ask:">info@tgif.net</a>
     </div>
   </header>
@@ -78,8 +78,12 @@
       <div class="row">
         <div class="col-md-6 portfolio-item">
 
-          <h2>Party Loyalty</h2>
-          <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda.
+          <h2>Attendance</h2>
+          <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even
+            if a majority is not present.
+          </p>
+          <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435
+            representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.
           </p>
 
         </div>
@@ -117,33 +121,33 @@
 
       <div class="row">
         <div class="col-md-6 portfolio-item">
-          <h2>Least Loyal (Bottom 10% of Party)</h2>
+          <h2>Least Engaged (Bottom 10% Attendance)</h2>
           <table class="table centered">
             <thead>
               <tr>
                 <th>Number</th>
                 <th>Name</th>
-                <th>Number Party Votes</th>
-                <th>% Party Votes</th>
+                <th>Number of Missed Votes</th>
+                <th>% Missed</th>
               </tr>
             </thead>
-            <tbody class="Least-Loyal">
+            <tbody class="Least-Engaged">
             </tbody>
           </table>
         </div>
 
         <div class="col-md-6 portfolio-item">
-          <h2>Most Loyal (Top 10% of Party)</h2>
+          <h2>Most Engaged (Top 10% Attendance)</h2>
           <table class="table centered">
             <thead>
               <tr>
                 <th>Number</th>
                 <th>Name</th>
-                <th>Number Party Votes</th>
-                <th>% Party Votes</th>
+                <th>Number of Missed Votes</th>
+                <th>% Missed</th>
               </tr>
             </thead>
-            <tbody class="Most-Loyal">
+            <tbody class="Most-Engaged">
             </tbody>
           </table>
         </div>
@@ -156,7 +160,7 @@
   </footer>
 </body>
 
-<script src="congress-113-house.js"></script>
-<script src="senate-statistics.js"></script>
+<script src="../scripts/congress-113-house.js"></script>
+<script src="../scripts/senate-statistics.js"></script>
 
 </html>

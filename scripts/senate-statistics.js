@@ -28,6 +28,7 @@ var statistics = {
 
 };
 
+$(document).ready ( function() {
 // ----------------------------------------------------------------------------- All the data of the 'statistics'
 // Different *var*s are being created in order to count the number of each Party
 var numberOfRepublicans = 0;
@@ -450,3 +451,5 @@ console.log(pctOfVotesWithPartyOfIndependents);
 
 statistics.no_of_votes_with_party_pct["Total"] = totalNumberOfvotesWithPartyPCT;
 console.log(totalNumberOfvotesWithPartyPCT);
+}
+)
