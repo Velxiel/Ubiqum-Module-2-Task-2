@@ -72,129 +72,82 @@
     </div>
   </nav>
 
-  <!--Table container-->
-  <div>
-    <h2>Party Loyalty</h2>
-    <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda. </p>
+  <div class="container">
 
-    <h2>Senate at a glance</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Party</th>
-          <th>Number of Reps</th>
-          <th>% Voted with Prty</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Republican</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>Democrat</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>Independent</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-      </tbody>
-    </table>
+    <!--Table container-->
+    <div class="row">
+      <div class="row">
+        <div class="col-md-6 portfolio-item">
 
-    <h2>Least Loyal (Bottom 10% of Party)</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Number Party Votes</th>
-          <th>% Party Votes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-      </tbody>
-    </table>
+          <h2>Party Loyalty</h2>
+          <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda.
+          </p>
 
-    <h2>Most Loyal (Top 10% of Party)</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Number Party Votes</th>
-          <th>% Party Votes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-      </tbody>
-    </table>
+        </div>
+
+        <div class="col-md-6 portfolio-item">
+
+          <h2 class="on-right">Senate at a glance</h2>
+          <table class="table table-hover centered">
+            <thead>
+              <tr>
+                <th>Party</th>
+                <th>Number of Reps</th>
+                <th>% Voted with Prty</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="Republican-Data">
+                <td>Republican</td>
+              </tr>
+              <tr class="Democrat-Data">
+                <td>Democrat</td>
+              </tr>
+              <tr class="Independent-Data">
+                <td>Independent</td>
+              </tr>
+              <tr class="SumOfRepresentatives">
+                <td>Total</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h2 class="page-header"></h2>
+
+      <div class="row">
+        <div class="col-md-6 portfolio-item">
+          <h2>Least Loyal (Bottom 10% of Party)</h2>
+          <table class="table centered">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Number Party Votes</th>
+                <th>% Party Votes</th>
+              </tr>
+            </thead>
+            <tbody class="Least-Loyal">
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-6 portfolio-item">
+          <h2>Most Loyal (Top 10% of Party)</h2>
+          <table class="table centered">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Number Party Votes</th>
+                <th>% Party Votes</th>
+              </tr>
+            </thead>
+            <tbody class="Most-Loyal">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 
   <footer class="container-fluid navbar navbar-inverse footer-size">
@@ -205,54 +158,89 @@
 <script src="congress-113-senate.js"></script>
 <script src="senate-statistics.js"></script>
 <script>
-  // Takes the data from the JSON object
-  var members = data.results[0].members;
+  // -------------------------------------------------------------------------------------------------------------------
+  // var senate = {
+  //   "R": [],
+  //   "D": [],
+  //   "I": []
+  // };
+  //
+  // $.each(members, function(i, member) {
+  //   console.log(member.party);
+  //
+  //   senate[member.party].push(member);
+  // });
+  //
+  // console.log("Republicans", senate["R"].length);
+  // console.log("Democrats", senate["D"].length);
+  // console.log("Independents", senate["I"].length);
+  //
+  // function getAverageParty(partyMembers) {
+  //
+  //   var totalPartyVotes = 0;
+  //   var totalVotes = 0;
+  //
+  //   $.each(partyMembers, function(i, partyMember) {
+  //     console.log("~~~~");
+  //
+  //     totalVotes = totalVotes + parseInt(partyMember.votes_with_party_pct);
+  //
+  //     var ownVotes = Math.round(parseInt(partyMember.total_votes) / 100 * parseInt(partyMember.votes_with_party_pct));
+  //
+  //     totalPartyVotes = totalPartyVotes + ownVotes;
+  //   })
+  // }
+  // -------------------------------------------------------------------------------------------------------------------
 
-  // Creation of a Sorted Array
-  // So that all the 'members' can be accessed from this function with the parameters 'x' & 'y'
-  var sortedArray = members.sort(function(x, y) {
 
-    // This loop checks EVERY element inside the array
-    // Checks which of the 2 numbers (x & y) with the value 'votes_with_party_pct'
-    if (x.votes_with_party_pct < y.votes_with_party_pct) {
-      // If the first is smaller than the latter, then we order it not to do anything
-      return -1;
-      // This -1 means practicaly "Don't do anything!!"
-    } else {
-      return 1;
-      // This 1 means practicaly "Do something!!"
-      // There is also 0, that says "Leave everything as it is!!"
-    }
-  });
 
-  console.log(sortedArray);
 
-  // Counting the 'ten percent' of the JSON total
-  var tenPercent = Math.round(members.length * (0.1));
-  console.log(tenPercent);
 
-  for (var i = 0; i < tenPercent; i++) {
-    var member = members[i];
 
-    // I create this variable to make my code look more tidy and clean
-    var name = member.first_name + ' ' + (member.middle_name || "") + ' ' + member.last_name;
-    console.log(name);
 
-    // Show percentage
-    var percentageOfLeastEngaged = member.votes_with_party_pct + " %";
-    console.log(percentageOfLeastEngaged);
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  // Here an average of the each Party's array of data is being calculated
 
-    // ??????????????????????????????????????????????????????????????????????????????????????????????????????????????????
-    var lastListItem = member[tenPercent];
-  }
-  for (var i = tenPercent + 1; i < members.length; i++) {
-    var member = members[i];
+  // var averagePercentageOfRepublicans = 100 * numberOfRepublicans / totalNumberOfRepresentatives;
+  // console.log(averagePercentageOfRepublicans + " %");
+  //
+  // var averagePercentageOfDemocrats = 100 * numberOfDemocrats / totalNumberOfRepresentatives;
+  // console.log(averagePercentageOfDemocrats + " %");
+  //
+  // var averagePercentageOfIndependents = 100 * numberOfIndependents / totalNumberOfRepresentatives;
+  // console.log(averagePercentageOfIndependents + " %");
+  //
+  // var totalPercentageOfRepresentatives = 100 * totalNumberOfRepresentatives / totalNumberOfRepresentatives;
+  // console.log(totalPercentageOfRepresentatives + " %");
 
-    if (member === lastListItem) {
-      var extraPercentageOfLeastEngaged = member.votes_with_party_pct + "%";
-      console.log(extraPercentageOfLeastEngaged);
-    }
-  }
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+  //
+  // var averageVotingPercentageOfRepublicans = 100 * numberOfRepublicans / totalNumberOfRepresentatives;
+  // console.log(averagePercentageOfRepublicans + " %");
+  //
+  // var averageVotingPercentageOfDemocrats = 100 * numberOfDemocrats / totalNumberOfRepresentatives;
+  // console.log(averagePercentageOfDemocrats + " %");
+  //
+  // var averageVotingPercentageOfIndependents = 100 * numberOfIndependents / totalNumberOfRepresentatives;
+  // console.log(averagePercentageOfIndependents + " %");
+  //
+  // var totalVotingPercentageOfRepresentatives = 100 * totalNumberOfRepresentatives / totalNumberOfRepresentatives;
+  // console.log(totalPercentageOfRepresentatives + " %");
+
+  // And here the new property of the 'Statistics'-JS are being assigned to the file
+  // statistics.percentage_of_voted_parties["Pecentage_of_Republicans"] = averagePercentageOfRepublicans;
+  // console.log(averagePercentageOfRepublicans);
+  //
+  // statistics.percentage_of_voted_parties["Pecentage_of_Democrats"] = averagePercentageOfDemocrats;
+  // console.log(averagePercentageOfDemocrats);
+  //
+  // statistics.percentage_of_voted_parties["Pecentage_of_Independents"] = averagePercentageOfIndependents;
+  // console.log(averagePercentageOfIndependents);
+  //
+  // statistics.percentage_of_voted_parties["Pecentage_of_Total"] = totalPercentageOfRepresentatives;
+  // console.log(totalPercentageOfRepresentatives);
 </script>
 
 </html>

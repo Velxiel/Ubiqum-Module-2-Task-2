@@ -86,24 +86,22 @@
       <!-- Here are the Checkboxes being created -->
       <div class="checkboxes checkbox1">
         <label class="checkbox-title">Filter By Party: </label>
-        <input type="checkbox" value="R">
-        <label for="foo_bar">Republican</label>
-        <input type="checkbox" value="D">
-        <label for="foo_baz">Democrat</label>
-        <input type="checkbox" value="I">
-        <label for="foo_baz">Independent</label>
+        <input type="checkbox" value="R" checked="">
+        <label>Republican</label>
+        <input type="checkbox" value="D" checked="">
+        <label>Democrat</label>
+        <input type="checkbox" value="I" checked="">
+        <label>Independent</label>
       </div>
       <!-- Here is the Select being created -->
-      <div class="checkboxes checkbox2">
+      <div class="checkboxes checkbox2 select-options">
         <label class="checkbox-title">Filter By State: </label>
-        <input type="checkbox" name="foo" value="bar" id="foo_bar">
-        <label for="foo_bar">Party</label>
       </div>
     </div>
   </fieldset>
 
   <!-- Here I put the class with the name "table table-hover", to import the attributes of my linked script that I put in the head-->
-  <table class="table table-hover table-bordered">
+  <table id="senate-data" class="table table-hover table-bordered">
     <thead>
       <tr>
         <th>Members</th>
@@ -114,7 +112,6 @@
         <th>Vote Percentage</th>
       </tr>
     </thead>
-    <tbody id="senate-data"></tbody>
   </table>
 
   <footer class="container-fluid navbar navbar-inverse footer-size">
@@ -131,7 +128,7 @@
   // Then I have to access the 'results'-array's first and only element
   // Lastly I write 'members' to access the specific object of my array that gives me the information that I want
   var members = data.results[0].members;
-  var tbody = '';
+  var tbody = $('<tbody />');
 
   // (ii)
   //  NEW ARRAY OF MEMBERS CREATION********************************************************************************************************************
@@ -145,8 +142,8 @@
     var member = members[i];
 
     // Here an *addClass* element is required to give a class to some specific elements later
-    var tr = '<tr>';
-    $(tr).addClass(member.party)
+    var tr = $('<tr />')
+      .addClass(member.party)
       .addClass(member.state)
       .data("party", member.party)
       .data('state', member.state);
@@ -163,64 +160,50 @@
     // But it is going to be INSIDE of the TR
     // This TD is going to show on my web-page the Number of the member
     // But because the counting always starts from *0*, I add always *1* to get the actual number of the member
-    tr += '<td>' + (i + 1) + '</td>';
+    // tr += '<td>' + (i + 1) + '</td>';
+    //
+    // // Also, inside the TD tag I add the data that I need to see inside my TD
+    // tr += '<td>';
+    //
+    // // Here I use the *''* to keep the *member.url* extracted from the *<a>* element
+    // // Because othewise it is going to appear as JS and it won't be properly loaded
+    // tr += '<a href = "' + member.url + '" target = _blank>' + name + '</a>';
+    // tr += '</td>';
+    // tr += '<td>' + member.party + '</td>';
+    // tr += '<td>' + member.state + '</td>';
+    // tr += '<td>' + member.seniority + '</td>';
+    // tr += '<td>' + member.votes_with_party_pct + ' %' + '</td>';
+    //
+    // tr += '</tr>'
+    // tbody += tr;
 
-    // Also, inside the TD tag I add the data that I need to see inside my TD
-    tr += '<td>';
+    //  A td that shows the number of the member by using jQuery
+    tr.append($('<td />').text(i + 1));
 
-    // Here I use the *''* to keep the *member.url* extracted from the *<a>* element
-    // Because othewise it is going to appear as JS and it won't be properly loaded
-    tr += '<a href = "' + member.url + '" target = _blank>' + name + '</a>';
-    tr += '</td>';
-    tr += '<td>' + member.party + '</td>';
-    tr += '<td>' + member.state + '</td>';
-    tr += '<td>' + member.seniority + '</td>';
-    tr += '<td>' + member.votes_with_party_pct + ' %' + '</td>';
+    // Adding to the *TD* an *a* element to make it a link by using jQuery
+    var a = $('<a />').text(name).attr('href', member.url).attr('target', '_blank');
+    tr.append($('<td />').append(a));
 
-    tr += '</tr>'
-    tbody += tr;
-    $('tbody').hide();
+    // OOOORRRR this syntax could also be used, but it becomes less readable
+    // tr.append($('<td />').append($('<a />').text(name).attr('href', member.url).attr('target', '_blank'));
+
+    // And now by using jQuery again *td* is being created and it is appended to the *tr*
+    tr.append($('<td />').text(member.party));
+    tr.append($('<td />').text(member.state));
+    tr.append($('<td />').text(member.seniority));
+    tr.append($('<td />').text(member.votes_with_party_pct + ' %'));
+
+    tbody.append(tr);
   }
 
   // Here is needed to import the data from JS to the HTML and also using HTML Element-Tags INSIDE the JS
   // The 1st way of doing that is this:
-  document.getElementById("senate-data").innerHTML = tbody;
+  // document.getElementById("senate-data").innerHTML = tbody;
   // And the 2nd way is by using jQuery like this:
-  // $('#senate-data').html(tbody);
-
+  $('#senate-data').html(tbody);
 
   // (iii)
-  // CHANGES OF CHECKBOXES CREATION***********************************************************************************************************
-
-
-  // For the function's creation there is this code:
-  // function onCheckboxChanged(event) { ... }
-  // OR this syntax:
-  var onCheckboxChanged = function(event) {
-
-    // Here the checkbox's event is defined
-    var checkbox = $(event.currentTarget);
-
-    // Now it is assigned the property 'checked' when clicked
-    var isChecked = checkbox.prop('checked');
-    console.log(checkbox.val(), isChecked);
-
-    // And here is the actual result!!
-    // It is wished, so that WHEN it is checked, to be shown
-    if (isChecked == true) {
-      $("tbody tr." + checkbox.val()).fadeIn(500);
-    }
-    // And when not, not to be shown
-    else {
-      $("tbody tr." + checkbox.val()).fadeOut(300);
-    }
-  }
-
-  $('.checkboxes input').change(onCheckboxChanged);
-
-
-  // (iv)
-  // SELECT CREATION********************************************************************************************************************
+  // SELECT CREATION*******************************************************************************************************************
 
   // Now the *SELECT* is being created
   var select = $('<select />');
@@ -268,6 +251,79 @@
 
   // And here it is returned to be shown to the HTML
   $('.select-options').append(select);
+
+
+  // (iv)
+  // FILTER CREATION**************************************************************************************************************
+  // A function is being created
+  var onFilterChanged = function() {
+
+    // That checks if the 'input-checkbox' is 'checked'
+    // And then a *map* is executed
+    // EXPLANATION: *MAP* is an element that searches in an array, creates a new one and then gives back the new result
+    // That contains a 'function'
+    var parties = $('input:checkbox:checked').map(function() {
+      // The function 'returns' the current *value* of the 'checkbox'
+      return this.value
+      // After that, the *map* returns a new array with the new *value*
+
+    }).get(); // And with *get*, and since there was no position specified inside its parenthesis(),
+    //           ALL of the elements inside the new array from 'map' are going to be shown
+
+    // A new variable is set to search for 'state'-*value* inside the *select* element
+    var state = select.val();
+
+    // And another one to 'count' the elements of the list that are being shown on the HTML
+    var count = 0;
+
+    // Now, it searches the *TR* (='table-row') and for 'each' of these, a function is firing
+    // It takes 2 parameters:
+    // i = the [i] of the array
+    // e = event
+    $('tbody tr').each(function(i, e) {
+
+      // A new variable is being created for the current ('this') 'data' of 'state'
+      var trstate = $(this).data("state");
+
+      // And another new variable is being created for the current ('this') 'data' of 'party'
+      var trparty = $(this).data("party");
+
+      // An *if* is created in order to check BOTH the elements with 'party' & 'state' *data*
+      // IF in the 'current' Array (='inArray') the 'parties' AND the *data* of the 'party' > -1
+      // (Which means that they both exist)
+      // AND ALSO (&&) the *data* of the 'state' are:
+      // EITHER the 'state' OR (||) the string "--State--"
+      var isInArray = $.inArray(trparty, parties) > -1;
+      var isSameState = trstate == state || state == "--State--";
+
+      if (isInArray && isSameState) {
+
+        // Then, it makes the 'current' (='this') to fade in with a duration of 500 ms
+        $(this).show(500);
+
+        // And also the 'count' is increasing
+        count++;
+
+        // ELSE they are being slided down
+      } else {
+        $(this).hide(500);
+      }
+    });
+
+    // And now if the 'count' equals 0 elements being shown on the screen:
+    if (count == 0) {
+
+      // A message is being created to 'alert' the user and also to provide the user with info
+      var message = alert("Please check a Party or a State to view the results\!");
+      // This is practically useless, but it makes the website a little bit more 'user-friendly'
+    }
+    console.log(count)
+
+  };
+
+  // Lastly, the 'input'-elements with 'checkbox'-attribute on the HTML ....
+  // .... are being 'changed', and the function 'onFilterChanged' is called
+  $('input:checkbox,select').change(onFilterChanged);
 </script>
 
 </html>

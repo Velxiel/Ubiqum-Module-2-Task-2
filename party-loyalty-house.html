@@ -72,129 +72,83 @@
     </div>
   </nav>
 
-  <!--Table container-->
-  <div>
-    <h2>Party Loyalty</h2>
-    <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda. </p>
+  <div class="container">
+    <!--Table container-->
+    <div class="row">
+      <div class="row">
+        <div class="col-md-6 portfolio-item">
 
-    <h2>Senate at a glance</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Party</th>
-          <th>Number of Reps</th>
-          <th>% Voted with Prty</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Republican</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>Democrat</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>Independent</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-      </tbody>
-    </table>
+          <h2>Party Loyalty</h2>
+          <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda.
+          </p>
 
-    <h2>Least Loyal (Bottom 10% of Party)</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Number Party Votes</th>
-          <th>% Party Votes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-      </tbody>
-    </table>
+        </div>
 
-    <h2>Most Loyal (Top 10% of Party)</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Number Party Votes</th>
-          <th>% Party Votes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-        <tr>
-          <td>--</td>
-          <td>--</td>
-          <td>--</td>
-        </tr>
-      </tbody>
-    </table>
+        <div class="col-md-6 portfolio-item">
+
+          <h2 class="on-right">Senate at a glance</h2>
+          <table class="table table-hover centered">
+            <thead>
+              <tr>
+                <th>Party</th>
+                <th>Number of Reps</th>
+                <th>% Voted with Prty</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="Republican-Data">
+                <td>Republican</td>
+              </tr>
+              <tr class="Democrat-Data">
+                <td>Democrat</td>
+              </tr>
+              <tr class="Independent-Data">
+                <td>Independent</td>
+              </tr>
+              <tr class="SumOfRepresentatives">
+                <td>Total</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h2 class="page-header"></h2>
+
+      <div class="row">
+        <div class="col-md-6 portfolio-item">
+          <h2>Least Loyal (Bottom 10% of Party)</h2>
+          <table class="table centered">
+            <thead>
+              <tr>
+                <th>Number</th>
+                <th>Name</th>
+                <th>Number Party Votes</th>
+                <th>% Party Votes</th>
+              </tr>
+            </thead>
+            <tbody class="Least-Loyal">
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-6 portfolio-item">
+          <h2>Most Loyal (Top 10% of Party)</h2>
+          <table class="table centered">
+            <thead>
+              <tr>
+                <th>Number</th>
+                <th>Name</th>
+                <th>Number Party Votes</th>
+                <th>% Party Votes</th>
+              </tr>
+            </thead>
+            <tbody class="Most-Loyal">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 
   <footer class="container-fluid navbar navbar-inverse footer-size">
@@ -203,23 +157,6 @@
 </body>
 
 <script src="congress-113-house.js"></script>
-<script>
-  // A var named 'statistics' is created
-  // It contains a JSON, that can be used for the calculations later
-  var statistics = {
-    no_of_reps: {
-      "Number of Republicans": 0,
-      "Number of Democrats": 0,
-      "Number of Independents": 0,
-      "Total": 0
-    },
-    no_of_party_votes: {
-      "Party Votes of Republicans": 0,
-      "Party Votes of Democrats": 0,
-      "Party Votes of Independents": 0,
-      "Total": 0
-    }
-  };
-</script>
+<script src="senate-statistics.js"></script>
 
 </html>
