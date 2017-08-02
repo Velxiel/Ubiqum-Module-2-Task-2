@@ -26,16 +26,16 @@
   <!-- <link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Rationale" rel="stylesheet">
 
-  <link rel="stylesheet" href="../style/senate-starter-page.css">
+  <link rel="stylesheet" href="style/senate-starter-page.css">
 </head>
 
 <body>
   <header>
     <div class="logo">
-      <img src="../images/logo.png" alt="TGIF Logo" width="100px">
+      <img src="images/logo.png" alt="TGIF Logo" width="100px">
     </div>
     <div class="e-mail">
-      <img src="../images/e-mail-icon.svg" alt="E-mail Icon" width="40px">
+      <img src="images/e-mail-icon.svg" alt="E-mail Icon" width="40px">
       <a href="mailto:info@tgif.net?subject=To%20TGIF%20Team&body=Hello!%0AI%20would%20like%20%20to%20ask:">info@tgif.net</a>
     </div>
   </header>
@@ -94,8 +94,9 @@
         <label>Independent</label>
       </div>
       <!-- Here is the Select being created -->
-      <div class="checkboxes checkbox2 select-options">
+      <div class="checkboxes checkbox2 select">
         <label class="checkbox-title">Filter By State: </label>
+
       </div>
     </div>
   </fieldset>
@@ -112,27 +113,70 @@
         <th>Vote Percentage</th>
       </tr>
     </thead>
+
+    <tbody>
+    </tbody>
+
   </table>
+
 
   <footer class="container-fluid navbar navbar-inverse footer-size">
     <p>@2016 TGIF | All Rights Reserved</p>
   </footer>
-</body>
 
-<script src="../scripts/congress-113-senate.js"></script>
-<script type="text/javascript">
-  $(function() {
+  <!-- Link to the +Mustache+ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js">
+  </script>
 
-    var data = $.getJSON({
+  <script id="selectTemplate" type="text/html">
 
-    })
+    <select>
+      <!-- The first option of this 'select', would be better to be neutral, so it is being created before the loop -->
+      <option>--State--</option>
+
+      <!-- For the loop, the name of Mustache code is 'accessStates'  -->
+      {{#accessStates}}
+
+      <!-- The dot '.' between the curly brackets ({{.}}) represents the CURRENT object -->
+      <!-- But it is used only when a specific name is not given, like was done before (accessStates, accessMembers) and is also not defined below -->
+        <option value="{{.}}">{{.}}</option>
+
+      {{/accessStates}}
+
+    </select>
+
+  </script>
+
+  <!-- This is a different type of Script, this is why it has this 'text/html'-name -->
+  <!-- Also, an *ID* is given here to make its data more easily accessible -->
+  <script id="membersTemplate" type="text/html">
+
+    <!-- USING ^MUSTACHE^ -->
+    <!-- Basically ^Mustache^ is an easy way of creating a loop -->
+    <!-- These double curly brackets {{}} show the beggining of use of Mustache -->
+    <!-- The name given here, gives access to the data below -->
+    {{#accessMembers}}
+
+    <!-- Creation of a 'tr' is needed to create the table row-->
+    <tr>
+
+      <!-- Here, several 'tds' are being created in order to get filled with the data from the JS-file-->
+      <!-- Τhe 1st one has to be the number of the member, so the *index* is being used-->
+      <td>{{index}}</td>
+
+      <!-- For the 'full name' of the member, a variable is used, which is defined later-->
+      <td><a href="{{url}}">{{fullName}}</td>
+
+        <!-- And all the rest are taken directly from the JSON just by using their names inside the array -->
+      <td>{{party}}</td>
+      <td>{{state}}</td>
+      <td>{{seniority}}</td>
+      <td>{{votes_with_party_pct}}</td>
+
+    </tr>
+
+    <!-- While these double curly brackets {{}} show the end of use of Mustache -->
+    {{/accessMembers}}
 
 
-
-
-
-
-  })
-</script>
-
-</html>
+  </script>

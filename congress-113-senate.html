@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!--EXPLANATION -->
+  <!--All of the following code is copied from (*https://www.w3schools.com/bootstrap/bootstrap_get_started.asp*) to style my HTML-Page -->
+
+  <!--The paste starts here -->
+  <meta charset="utf-8">
+
+  <!--This to make my Page be responsive to any device-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!--And ends here -->
+
+  <!-- (1) This is a link to Google-Fonts that provides me with style for *font-family* that I am going to use in my CSS file -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Rationale" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Rationale" rel="stylesheet">
+
+  <link rel="stylesheet" href="style/senate-starter-page.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="TGIF Logo" width="100px">
+    </div>
+    <div class="e-mail">
+      <img src="images/e-mail-icon.svg" alt="E-mail Icon" width="40px">
+      <a href="mailto:info@tgif.net?subject=To%20TGIF%20Team&body=Hello!%0AI%20would%20like%20%20to%20ask:">info@tgif.net</a>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="home-starter-page.html">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="congress-113-senate.html">Senate</a></li>
+            <li><a href="congress-113-house-jQuery.html">House</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Attendance
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="attendance-senate.html">Senate</a></li>
+            <li><a href="attendance-house.html">House</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Party Loyalty
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="party-loyalty-senate.html">Senate</a></li>
+            <li><a href="party-loyalty-house.html">House</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!--Table container-->
+  <h2>Senators</h2>
+  <p>
+    First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive
+    powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory
+    officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.
+  </p>
+
+  <!-- Here is the Fieldset being created -->
+  <fieldset>
+    <div>
+      <!-- Here are the Checkboxes being created -->
+      <div class="checkboxes checkbox1">
+        <label class="checkbox-title">Filter By Party: </label>
+        <input type="checkbox" value="R" checked="">
+        <label>Republican</label>
+        <input type="checkbox" value="D" checked="">
+        <label>Democrat</label>
+        <input type="checkbox" value="I" checked="">
+        <label>Independent</label>
+      </div>
+      <!-- Here is the Select being created -->
+      <div class="checkboxes checkbox2 select">
+        <label class="checkbox-title">Filter By State: </label>
+
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- Here I put the class with the name "table table-hover", to import the attributes of my linked script that I put in the head-->
+  <table id="senate-data" class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Members</th>
+        <th>Full Name</th>
+        <th>Party</th>
+        <th>State</th>
+        <th>Seniority</th>
+        <th>Vote Percentage</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    </tbody>
+
+  </table>
+
+
+  <footer class="container-fluid navbar navbar-inverse footer-size">
+    <p>@2016 TGIF | All Rights Reserved</p>
+  </footer>
+
+  <!-- Link to the +Mustache+ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js">
+  </script>
+
+  <script id="selectTemplate" type="text/html">
+
+    <select id="stateFilter">
+      <!-- The first option of this 'select', would be better to be neutral, so it is being created before the loop -->
+      <option>--State--</option>
+
+      <!-- For the loop, the name of Mustache code is 'accessStates'  -->
+      {{#accessStates}}
+
+      <!-- The dot '.' between the curly brackets ({{.}}) represents the CURRENT object -->
+      <!-- But it is used only when a specific name is not given, like was done before (accessStates, accessMembers) and is also not defined below -->
+        <option value="{{.}}">{{.}}</option>
+
+      {{/accessStates}}
+
+    </select>
+
+  </script>
+
+  <!-- This is a different type of Script, this is why it has this 'text/html'-name -->
+  <!-- Also, an *ID* is given here to make its data more easily accessible -->
+  <script id="membersTemplate" type="text/html">
+
+    <!-- USING ^MUSTACHE^ -->
+    <!-- Basically ^Mustache^ is an easy way of creating a loop -->
+    <!-- These double curly brackets {{}} show the beggining of use of Mustache -->
+    <!-- The name given here, gives access to the data below -->
+    {{#accessMembers}}
+
+    <!-- Creation of a 'tr' is needed to create the table row-->
+    <tr data-state="{{state}}" data-party="{{party}}">
+
+      <!-- Here, several 'tds' are being created in order to get filled with the data from the JS-file-->
+      <!-- Τhe 1st one has to be the number of the member, so the *index* is being used-->
+      <td>{{index}}</td>
+
+      <!-- For the 'full name' of the member, a variable is used, which is defined later-->
+      <td><a href="{{url}}">{{fullName}}</td>
+
+        <!-- And all the rest are taken directly from the JSON just by using their names inside the array -->
+      <td>{{party}}</td>
+      <td>{{state}}</td>
+      <td>{{seniority}}</td>
+      <td>{{votes_with_party_pct}}</td>
+
+    </tr>
+
+    <!-- While these double curly brackets {{}} show the end of use of Mustache -->
+    {{/accessMembers}}
+
+
+  </script>
+
+  <script type="text/javascript">
+
+    // This jQuery code is used to load everything AFTER the DOM is ready
+    $(function () {
+
+
+
+      // By using jQuery, the JSON is accessed by its 'url' --> $.getJSON("url")
+      // And then a function is created, that provides 'data'
+      $.getJSON("https://nytimes-ubiqum.herokuapp.com/congress/113/senate", function(data) {
+
+        // Defining the 'members' of the JSON-url here
+        var members = data.results[0].members;
+
+        // Creation of a template with the use of the *id* (#membersTemplate) in the *html* file
+        var membersTemplate = $('#membersTemplate').html();
+
+        // And also creation of a template for the *id* (#selectTemplate) in the *html* file
+        var selectTemplate = $('#selectTemplate').html();
+
+
+
+        // Creation of an empty array is needed
+        var states = [];
+
+        // -----------------------------------------------------------------Loop
+        // And for each one of them, a function is being created
+        // It gets two values: member & i
+        members.forEach(function(member, i){
+          var member = members[i];
+
+          // A variable 'index' is being created here, because the number of the member needs to be shown
+          // Its value is 'i + 1', because the counting starts from '0'
+          member.index = i + 1;
+
+          // A variable 'fullName' is being created here because the name of the member needs to be shown
+          // And inside all the 3 names are being passed down to it
+          // Because for the computer this is a huge string and nothing else
+          // ".join" needs to be added to make the string easier to be read
+          // In its parenthesis we add ' *blank_space* ', because a single space is needed between the names
+          // ALSO: It automatically rejects the 'null' and the 'unidentified' properties
+          member.fullName = [member.first_name, member.middle_name, member.last_name].join(' ');
+
+
+
+          // Check for the list of options for 'Select'
+          if (states.indexOf(member.state) == -1) {
+            states.push(member.state);
+          }
+
+        });
+
+        // Here the new given array is alphabetically sorted
+        states.sort();
+
+        // After all the work has been done, a new variable is being created to 'render' the *Mustache* tag
+        // Two properties are being needed:
+        // 1) The 'template' that was created before
+        // 2) The 'members' that was defined before
+        var rendered = Mustache.render(membersTemplate, {accessMembers: members});
+        var renderedSelect = Mustache.render(selectTemplate, {accessStates: states});
+
+
+        // And lastly, by using j Query again, the 'rendered' var is being appended to the html, in the *id*'s (senate-data) *tbody*
+        $('#senate-data tbody').html(rendered);
+
+        // Or I can also use the 'attend' command
+        $('.select').append(renderedSelect);
+
+        var onFilterChanged = function() {
+          var parties = $('input:checkbox:checked').map(function() {
+            return this.value
+          }).get();
+
+          var state = $('#stateFilter').val();
+          var count = 0;
+
+          $('tbody tr').each(function(i, e) {
+            var trstate = $(this).data("state");
+            var trparty = $(this).data("party");
+            var isInArray = $.inArray(trparty, parties) > -1;
+            var isSameState = trstate == state || state == "--State--";
+
+            if (isInArray && isSameState) {
+              $(this).show(500);
+                count++;
+            } else {
+                $(this).hide(500);
+            }
+          });
+
+          if (count == 0) {
+            var message = alert("Please check a Party or a State to view the results\!");
+          }
+
+        };
+        $('input:checkbox, select').change(onFilterChanged);
+
+
+      });
+
+
+
+
+
+    });
+  </script>
+</body>
+
+</html>
